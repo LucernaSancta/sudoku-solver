@@ -9,10 +9,16 @@ The general start command is
 python main.py [-flag(s)]
 ```
 
+## Flags
+
+| Flag | descriptios | example |
+| --- | --- | --- |
+| `-i [path]` | Import a sudoku form an existing CSV file | `python main.py -i example.csv` |
+
 ## Repo structure
 
 | File | Description |
 | --- | --- |
-| main.py | main executable |
-| sudoku.py | responsible for sudoku checking and value storing |
-| window.py | responsible for GUIs and visualizations |
+| `main.py` | main executable |
+| `sudoku.py` | responsible for sudoku checking and value storing |
+| `window.py` | responsible for GUIs and visualizations |
