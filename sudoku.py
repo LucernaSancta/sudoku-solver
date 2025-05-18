@@ -31,6 +31,10 @@ class Sudoku:
     def current(self) -> np.ndarray:
         return np.where(self._original == 0, self._attempt, self._original)
     
+    @property
+    def original(self) -> np.ndarray:
+        return np.array(self._original)
+    
     def check9x1(self, value: np.ndarray) -> bool:
         '''
         Check if an array like object is valid, returns False if not.
