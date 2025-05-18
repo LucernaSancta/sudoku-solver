@@ -1,6 +1,7 @@
 import sys
 import numpy as np
 from sudoku import Sudoku
+from window import SudokuVisualizer
 
 
 def check_if_original(index: list, sudoku_original: np.ndarray) -> bool:
@@ -67,6 +68,7 @@ def main() -> None:
 
     # Create the sudoku
     sudoku = Sudoku()
+    window = SudokuVisualizer()
 
 
     # Chack for the arguments
@@ -78,9 +80,15 @@ def main() -> None:
     solved = False
     while not solved:
 
+        # Visualize the sudoku solver
+        window.draw_grid()
+        window.draw_numbers(sudoku.current, sudoku.original)
+        window.flip()
+
+
         # Check if the index is inside the original sudoku
         if check_if_original(index, sudoku.original):
-            
+
             index = index_increment(index)
 
             # If True then the index is on the last cell and its an original number
