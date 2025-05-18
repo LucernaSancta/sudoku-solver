@@ -84,3 +84,21 @@ class Sudoku:
                     return False
                 
         return True
+    
+    def increment_attempt(self, index) -> bool:
+        '''
+        Try to add one to the current cell,
+        returns False if the cell is already at maximum
+        '''
+
+        if self._attempt[index[0]][index[1]] == 9:
+            return False
+        
+        else:
+            self._attempt[index[0]][index[1]] += 1
+            return True
+    
+    def zero_attempt(self, index) -> None:
+        '''Subtract one to the current cell'''
+
+        self._attempt[index[0]][index[1]] = 0
