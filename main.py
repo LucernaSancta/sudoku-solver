@@ -65,6 +65,8 @@ def main() -> None:
 
         if ACTIVATE_GUI:
             # Visualize the sudoku solver
+            window.screen.fill(window.colors['white'])
+            window.draw_rect(index)
             window.draw_grid()
             window.draw_numbers(sudoku.current, sudoku.original)
             window.flip()

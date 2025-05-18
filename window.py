@@ -21,35 +21,28 @@ class SudokuVisualizer:
             'blue': (0, 0, 255)
         }
 
-        self.grid_surface = pygame.Surface((self.width, self.height))
-        self.draw_grid_init()
-
-    def draw_grid_init(self) -> None:
-        self.grid_surface.fill(self.colors['white'])
+    def draw_grid(self) -> None:
 
         for i in range(1, self.rows + 1):
             pygame.draw.line(
-                self.grid_surface, self.colors['gray'],
+                self.screen, self.colors['gray'],
                 (0, i * self.cell_size), (self.width, i * self.cell_size), 1
             )
             pygame.draw.line(
-                self.grid_surface, self.colors['gray'],
+                self.screen, self.colors['gray'],
                 (i * self.cell_size, 0), (i * self.cell_size, self.height), 1
             )
 
         for i in range(1, self.rows + 1):
             if i % 3 == 0:
                 pygame.draw.line(
-                    self.grid_surface, self.colors['black'],
+                    self.screen, self.colors['black'],
                     (0, i * self.cell_size), (self.width, i * self.cell_size), 4
                 )
                 pygame.draw.line(
-                    self.grid_surface, self.colors['black'],
+                    self.screen, self.colors['black'],
                     (i * self.cell_size, 0), (i * self.cell_size, self.height), 4
                 )
-
-    def draw_grid(self) -> None:
-        self.screen.blit(self.grid_surface, (0,0))
 
     def draw_numbers(self, current, original) -> None:
 
@@ -74,6 +67,9 @@ class SudokuVisualizer:
                         text,
                         (j * self.cell_size + 20, i * self.cell_size + 10)
                     )
+
+    def draw_rect(self, index) -> None:
+        pygame.draw.rect(self.screen, self.colors['gray'], (index[1] * self.cell_size, index[0] * self.cell_size, self.cell_size, self.cell_size))
 
     def flip(self) -> None:
         pygame.display.flip()
