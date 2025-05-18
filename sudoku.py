@@ -28,7 +28,7 @@ class Sudoku:
             self.create_sudoku(list(spamreader))
     
     @property
-    def current(self) -> np.array:
+    def current(self) -> np.ndarray:
         return self._original
     
     def check9x1(self, value: np.ndarray) -> bool:
@@ -58,6 +58,32 @@ class Sudoku:
         return True
 
 
+    def check9x9(self) -> bool:
+        '''Check if the current configuration is valid, returns False if not'''
+
+        # Assign for better performances
+        current = self.current
+
+        for i in range(9):
+            if not self.check9x1(current[i, :]): return False
+            if not self.check9x1(current[:, i]): return False
+        
+        # Rearrange in 3x3 blocks
+        blocks = current.reshape(3, 3, 3, 3).swapaxes(1, 2)
+
+        for i in range(3):
+            for j in range(3):
+
+                # Strech the 3x3 matrix in a 9x1 and check if is valid
+                streched = blocks[i][j].reshape(9)
+                if not self.check9x1(streched):
+                    return False
+                
+        return True
+
+
 if __name__ == '__main__':
     sudoku = Sudoku()
     sudoku.import_from_file('example.csv')
+    print(sudoku.current)
+    print(sudoku.check9x9())
