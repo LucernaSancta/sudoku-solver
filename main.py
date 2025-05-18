@@ -1,7 +1,9 @@
-import sys
 import numpy as np
 from sudoku import Sudoku
 from window import SudokuVisualizer
+
+
+FILE_PATH = 'example.csv'
 
 
 def check_if_original(index: list, sudoku_original: np.ndarray) -> bool:
@@ -43,37 +45,14 @@ def check_outofbound(index) -> bool:
 
 def main() -> None:
 
-    # Create arguments dictionary
-    args_dict = {
-        '-i': False
-    }
-
-
-    args = sys.argv[1:]
-    # Read every argument
-    while args:
-
-        match args[0]:
-
-            # Import argument
-            case '-i':
-                try:
-                    args_dict['-i'] = args[1]
-                    args.pop(1)
-                except IndexError:
-                    print('The -i flag must be followed by a file path')
-                
-        args.pop(0)
-
-
     # Create the sudoku
     sudoku = Sudoku()
     window = SudokuVisualizer()
 
 
     # Chack for the arguments
-    if args_dict['-i']:
-        sudoku.import_from_file(args_dict['-i'])
+    if FILE_PATH:
+        sudoku.import_from_file(FILE_PATH)
 
 
     index = [0,0]
