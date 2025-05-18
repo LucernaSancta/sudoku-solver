@@ -72,9 +72,3 @@ class SudokuVisualizer:
 
     def draw_rect(self, index) -> None:
         pygame.draw.rect(self.screen, self.colors['gray'], (index[1] * self.cell_size, index[0] * self.cell_size, self.cell_size, self.cell_size))
-
-    def flip(self) -> None:
-        pygame.display.flip()
-
-    def quit(self) -> None:
-        pygame.quit()

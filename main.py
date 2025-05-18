@@ -1,3 +1,4 @@
+import pygame
 import numpy as np
 from sudoku import Sudoku
 from window import SudokuVisualizer
@@ -5,7 +6,7 @@ from window import SudokuVisualizer
 
 FILE_PATH = 'example.csv'
 ACTIVATE_GUI = True
-FPS = 10
+FPS = 20
 
 
 def check_if_original(index: list, sudoku_original: np.ndarray) -> bool:
@@ -63,12 +64,19 @@ def main() -> None:
     while not solved:
 
         if ACTIVATE_GUI:
+            
+            # Check the events
+            for event in pygame.event.get():
+                if event == pygame.QUIT:
+                    pygame.quit()
+                    solved = True
+
             # Visualize the sudoku solver
             window.screen.fill(window.colors['white'])
             window.draw_rect(index)
             window.draw_grid()
             window.draw_numbers(sudoku.current, sudoku.original)
-            window.flip()
+            pygame.display.flip()
 
             window.clock.tick(FPS)
 
