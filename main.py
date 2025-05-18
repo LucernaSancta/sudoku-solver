@@ -1,4 +1,3 @@
-import time
 import numpy as np
 from sudoku import Sudoku
 from window import SudokuVisualizer
@@ -71,8 +70,7 @@ def main() -> None:
             window.draw_numbers(sudoku.current, sudoku.original)
             window.flip()
 
-            # Wait to match the FPS
-            time.sleep(1/FPS)
+            window.clock.tick(FPS)
 
 
         # Check if the index is inside the original sudoku

@@ -21,6 +21,8 @@ class SudokuVisualizer:
             'blue': (0, 0, 255)
         }
 
+        self.clock = pygame.time.Clock()
+
     def draw_grid(self) -> None:
 
         for i in range(1, self.rows + 1):
