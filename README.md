@@ -6,14 +6,13 @@ A python script that solves sudokus using back propagation
 
 The general start command is
 ```bash
-python main.py [-flag(s)]
+python main.py
 ```
 
-## Flags
+## Warning
 
-| Flag | descriptios | example |
-| --- | --- | --- |
-| `-i [path]` | Import a sudoku form an existing CSV file | `python main.py -i example.csv` |
+The script is extremly slow and it is used only for graphical demostrations,
+to use this script as efficently as possilbe use in in CLI, do not render the sudoku GUI.
 
 ## How it works
 
