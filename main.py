@@ -59,9 +59,12 @@ def main() -> None:
         sudoku.import_from_file(FILE_PATH)
 
 
+    iterations = 0
     index = [0,0]
     solved = False
     while not solved:
+
+        iterations += 1
 
         if ACTIVATE_GUI:
             
@@ -115,8 +118,9 @@ def main() -> None:
         
         # Check if the sudoku is solved
         solved = check_outofbound(index)
-        
+    
     print(sudoku.current)
+    print(f'Completed in: {iterations} iterations')
 
 
 if __name__ == '__main__':
