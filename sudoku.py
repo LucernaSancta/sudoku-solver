@@ -29,7 +29,7 @@ class Sudoku:
     
     @property
     def current(self) -> np.ndarray:
-        return self._original
+        return np.where(self._original == 0, self._attempt, self._original)
     
     def check9x1(self, value: np.ndarray) -> bool:
         '''
@@ -80,10 +80,3 @@ class Sudoku:
                     return False
                 
         return True
-
-
-if __name__ == '__main__':
-    sudoku = Sudoku()
-    sudoku.import_from_file('example.csv')
-    print(sudoku.current)
-    print(sudoku.check9x9())
