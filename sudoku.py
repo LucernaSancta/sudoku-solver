@@ -53,10 +53,6 @@ class Sudoku:
         # check if array values lie in the range [1, 9]
         if not ((value >= 1) & (value <= 9)).all():
             return False
-        
-        # Check if the sum is less than 45
-        if sum(value) > 45:
-            return False
 
         # The array is valid
         return True
